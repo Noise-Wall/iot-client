@@ -131,10 +131,15 @@ void setLED() {
     if (server.method() == HTTP_POST) {
       if (postObj.containsKey("status")) {
         Serial.println(F("done."));
-        if (!isLEDon) 
-          digitalWrite(0, HIGH);
-        else 
+        if (!isLEDon) {
+            digitalWrite(0, HIGH);
+            isLEDon = true;
+          }
+        else {
           digitalWrite(0, LOW);
+          isLEDon = false;
+        }
+
 
         DynamicJsonDocument doc(512);
         doc["status"] = "OK";
