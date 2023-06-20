@@ -37,9 +37,12 @@ async function get() {
 async function post() {
   const json = isOn.value ? { status: "off" } : { status: "on" };
   return api()
-    .post("/led", json)
+    .post("/led", json, {
+      withCredentials: true
+    })
     .then((res) => {
       console.log(res)
+      isOn.value = !isOn.value
     })
     .catch(function errCatch(err) {
       console.log(err.message);

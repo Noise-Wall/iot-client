@@ -112,6 +112,7 @@ void getDHT() {
 
 // POST Route
 void setLED() {
+  setCrossOrigin();
   String postBody = server.arg("plain");
   Serial.println(postBody);
   DynamicJsonDocument doc(512);
@@ -168,6 +169,7 @@ void restServerRouting() {
   server.on(F("/settings"), HTTP_GET, getSettings);
   server.on(F("/settings"), HTTP_OPTIONS, sendCrossOriginHeader);
   server.on(F("/temperature"), HTTP_GET, getDHT);
+  server.on(F("/led"), HTTP_OPTIONS, sendCrossOriginHeader);
   server.on(F("/led"), HTTP_POST, setLED);
 }
 
