@@ -1,29 +1,9 @@
-# iot-client
+# Comunicacion IoT mediante peticiones HTTP
 
-This template should help get you started developing with Vue 3 in Vite.
+Comunicacion bidireccional entre un dispositivo IoT (modulo WiFi) y un servidor (Raspberry Pi) mediante peticiones HTTP.
 
-## Recommended IDE Setup
+El modulo WiFi es un ESP8266 NodeMcu configurado como WebServer, conectado a un sensor DHT11 y a un LED mediante red local.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+El cliente (Raspberry Pi) realiza peticiones HTTP GET al servicio (ESP8266) para obtener la informacion del sensor de temperatura. Y mediante HTTP POST prende y apaga el LED.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+El cliente esta hecho en Vue.js, y se trata de una pagina simple que hace peticiones mediante Axios al modulo de red en un intervalo de 1 segundo, y actualiza la informacion de acuerdo a lo que recibe.

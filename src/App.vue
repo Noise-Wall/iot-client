@@ -34,6 +34,18 @@ async function get() {
     });
 }
 
+async function post() {
+  const json = isOn.value ? { status: off } : { status: on };
+  return api()
+    .post("/led", json)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch(function errCatch(err) {
+      console.log(err.message);
+    });
+}
+
 async function updateData() {
   const newData = await get();
   tempC.value = newData.data.tempC;
@@ -69,6 +81,10 @@ setInterval(updateData, 1000);
       <label for="celsius">Celsius: {{ tempC.trim() }} C°</label>
       <label for="fahrenheit">Fahrenheit°: {{ tempF.trim() }} F°</label>
       <label for="humidity">Humidity: {{ humidity.trim() }}</label>
+      <button @click="post"> {{ isOn ? 'Apagar sensor' : 'Prender sensor'}}</button>
+    </div>
+    <h3 v-else>
+      Hubo un error de conexion.
     </div>
   </div>
 </template>
