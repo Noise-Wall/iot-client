@@ -35,7 +35,7 @@ async function get() {
 }
 
 async function post() {
-  const json = isOn.value ? { status: off } : { status: on };
+  const json = isOn.value ? { status: "off" } : { status: "on" };
   return api()
     .post("/led", json)
     .then((res) => {
