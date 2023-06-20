@@ -85,7 +85,7 @@ setInterval(updateData, 1000);
     </div>
     <h3 v-else>
       Hubo un error de conexion.
-    </div>
+    </h3>
   </div>
 </template>
 
