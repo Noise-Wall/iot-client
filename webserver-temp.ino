@@ -8,8 +8,8 @@
 
 #define DHTTYPE DHT11
 
-const char* ssid = "Dark side of the moon";
-const char* password = "Panfilo-92";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
 ESP8266WebServer server(80);
 
