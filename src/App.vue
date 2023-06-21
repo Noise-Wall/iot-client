@@ -13,7 +13,7 @@ const isOn = ref(true);
 function api() {
   try {
     return axios.create({
-      baseURL: "http://192.168.1.199",
+      baseURL: "http://jardines-home1.ddns.net:9000",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ async function post() {
   const json = isOn.value ? { status: "off" } : { status: "on" };
   return api()
     .post("/led", json, {
-      withCredentials: true
+      // withCredentials: true
     })
     .then((res) => {
       console.log(res)
