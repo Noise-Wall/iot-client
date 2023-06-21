@@ -13,7 +13,7 @@ const isOn = ref(true);
 function api() {
   try {
     return axios.create({
-      baseURL: "http://jardines-home1.ddns.net:9000",
+      baseURL: "http://jardines-home.ddns.net:9000",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
